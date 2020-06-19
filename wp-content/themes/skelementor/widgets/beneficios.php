@@ -76,7 +76,7 @@ class beneficios extends Widget_Base{
                 'imagem',
                 [
                     'label' => 'imagem',
-                    'type' => Elementor\Controls_Manager::TEXT,
+                    'type' => Elementor\Controls_Manager::MEDIA,
                 ]
             );
             $this->end_controls_section();
@@ -110,12 +110,12 @@ class beneficios extends Widget_Base{
 <?php
 
 $_query = new \WP_Query($post_query); 
-$hierarchy = getActiveUserHierarchy();
+$hierarquia = getActiveUserHierarchy();
 
-if (!empty($hierarchy && have_posts())) :
-    while ( $wp_query->have_posts() ): 
-        $wp_query->the_post();
-        get_template_part('loops/beneficios');
+if (!empty($hierarquia && have_posts())) :
+    while ( $_query->have_posts() ): 
+        $_query->the_post();
+        get_template_part('looping/beneficios');
     endwhile;
 endif;
 
@@ -139,19 +139,6 @@ body {
     width: 100%;
 }
 
-.BoxBeneficio .BoxBeneficio__box {
-    display: flex;
-    flex-direction: column;
-    max-width: 200px;
-    width: 100%;
-    height: auto;
-    position: relative;
-    background: #fff;
-    text-decoration: none;
-    border: 1px solid #e7e7e7;
-    align-self: stretch;
-}
-
 .BoxBeneficio__img {
     max-width: 200px;
     width: 100%;
@@ -159,15 +146,12 @@ body {
 }
 
 .BoxBeneficio_logo {
-    width: 80px;
-    height: 80px;
-    z-index: 1;
+    width: 120px;
+    height: 120px;
     background: #fff;
     border-radius: 50px;
     border: solid 1px #e7e7e7;
-    position: absolute;
-    top: 118px;
-    right: 25px;  
+    position: absolute; 
 }
 
 </style>
